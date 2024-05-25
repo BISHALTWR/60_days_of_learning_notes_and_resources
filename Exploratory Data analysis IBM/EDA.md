@@ -139,6 +139,86 @@ df = pd.read_csv(data_url, header=None)
 
 # EDA and Feature Engineering
 
+> EDA is an approach to analyzing the data sets to summarize their main characteristics, often with visual methods.
+
+- Why?
+    - get an initial feel for the data
+    - determine if the data makes sense or it need further cleaning
+    - helps identify patterns and trends in the data
+
+- Techniques:
+    - Summary statistics: average, median, min, max, correlations, etc.
+    - Visualization: histogram, scatter plots, box plots, etc.
+
+- Tools:
+    - Data Wrangling: pandas
+    - Visualization: matplotlib, seaborn
+
+- Sampling from dataframes
+    - For large data: random sample can make computation easier
+    - Hold out some part for testing model
+    - we may want to over- or under-sample observations when outcomes are uneven : stratified sampling should be done.
+
+> Creating Grouped plots(of similar plots) is a good option most of the time
+
+# Feature Engineering and Variable transformation
+
+- Transforming the data so that it fulfills assumptions required for the model.
+
+- For. eg: Prediction from linear regression models assume residuals are normally distributed.
+    - Log transform helps reduce the skewness of data
+    - log1p adds 1 before log (in case you have 0 in your data)
+
+- Polynomial features can be added to estimate higher-order relationships
+
+## Feature encoding
+
+- Variable selection => choosing set of featurees to include in the model
+- In addition to log and polynomial transformations, this can involve:
+    - Encoding: converting non-numeric features into numeric features
+    - Scaling: converting the scale of numeric data so they are comparable
+
+- Encoding is often applied to categorical features, that take non-numeric values:
+    - Nominal data: categorical variables that take values in unordered categories. For eg: blue, green, red; True, False;
+    - Ordinal data: categorical variables that take values in ordered categories. For eg: High, Medium, Low
+
+- Approaches:
+    - Binary Encoding: For variable that can take two values only. Eg. Male/Female
+    - One-hot encoding: Creates variables that take multiple values into binary(0,1) variables, one for each category. This creates several new variables.
+    - Ordinal encoding: Involves converting ordered categories into numerical values. (High, Medium, Low => 3,2,1). Must take gap into account.
+
+## Feature Scaling:
+
+> Feature scaling involves adjusting a variable's scale.
+
+- DIfferent data will have different scales.
+
+![example](feature_scaling.png)
+
+- Approaches:
+    - Standard scaling: converts features to standard normal variables. (substract mean and divide by standard error) (Susceptible to outliers)
+    - Min-max scaling: Min to 0 and max to 1. (Substract min and divide by range). Sensitive to outliers.
+    - Robust scaling: Similar to min-max but focuses on IQR.
+
+![approaches](feature_engineering_options.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # End note:
 
 - Log Transform is a good way to correct for skewness of data
