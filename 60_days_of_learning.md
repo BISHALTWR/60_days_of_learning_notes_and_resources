@@ -19,7 +19,7 @@
 
 - [ ] Algorithmic Toolbox - Universitty of California San Diego
 - [ ] An Intuitive Introduction to Probability - University of Zurich
-- [ ] Exploratory Data Analysis - IBM
+- [x] Exploratory Data Analysis - IBM
 - [ ] Applied Data Science Lab - WorldQuant University
 - [ ] Elements of AI - University of Helsinki
 - [ ] Machine Learning Specialization - Standford+DeepLearning.AI
