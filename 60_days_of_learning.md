@@ -1,6 +1,6 @@
 <center><h1> 60 Days of learning - Plan <h1><center>
 
-> Career path I will be pursuing: **AI**
+> Path I will be pursuing: **AI**
 
 ## Checklist:
 
