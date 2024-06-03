@@ -90,3 +90,47 @@ Repeat these steps for many iterations, until the network's output is satisfacto
     - In this technique, we temporarily remove random units that we select at learning phase. This prevents over-reliance on any one unit.
 
 ## TensorFlow
+
+> Library for building and training neural networks. It provides a comprehensive set of tools and functions for creating and optimizing neural network models. TensorFlow supports both CPU and GPU computations, making it suitable for a wide range of applications.
+
+## Computer Vision
+
+> Encompasses various computational methods for analyzing and understanding digital images, and is often achieved using neural networks.
+
+- Image Convolution:
+    - Applying a filter that adds each pixel value of an image to its neighbours, weighted according to a kernel matrix. Doing that alters the image and can help the neural network process it.
+
+- Pooling:
+    - Processing images in a neural network is computationally expensive due to the large number of input pixels.
+
+    - Pooling is a technique used to reduce the size of the input and thus computational complexity.
+
+    - In pooling, one pixel can represent a whole region of similar pixels.
+
+    - Max-Pooling is a specific type of pooling where the pixel with the highest value in a region is chosen to represent that region.
+
+    - An example of max-pooling is dividing an image into 2X2 squares and selecting the highest value pixel from each square, resulting in a smaller image.
+
+## Convolutional Neural Networks
+
+> A convolutional neural network is a neural network that uses convolution, usually for analyzing images.
+
+- By applying filters (convolution), we can distill some features of the image using different kernels. The filters can be improved in the same ways as weights in the neural networks, by adjusting them on the basis of the error of the output.
+
+- Then, the resulting images are pooled, after which pixels are fed to a traditional neural network as input (a process called flattening)
+
+![CNN](cnn.png)
+
+- Convolution and pooling can be performed multiple times to extract additional features and reduce the size of the input to the neural networks.
+
+> By convoluting and pooling, the neural network becomes less sensitive to variation. i.e. If the same picture is taken from slightly different angles, the input for convolutional neural network will be similar, whereas, without convolution and pooling, the input from each image would be vastly different.
+
+## Recurrent Neural Networks
+
+- Forward-feed Neural networks: input data is provided which eventually produces some output.
+
+![feed-forward neural network](feed_forward_nn.png)
+
+> Recurrent Neural Networks consist of a non-linear structure, where the network uses its own output as input. RNNs are capable of varying the number of outputs, unlike Forward Feed Neural Networks.
+
+- RNN can be helpful in cases where the network deals with sequences and not a single individual object. For eg: producing sequence of words, analyzing video files, translation tasks etc.
