@@ -17,19 +17,19 @@
 
 ### Courses:
 
-- [ ] Algorithmic Toolbox - Universitty of California San Diego (**2 modules left**)
+- [X] Algorithmic Toolbox - Universitty of California San Diego
 - [X] An Intuitive Introduction to Probability - University of Zurich
 - [x] Exploratory Data Analysis - IBM
 - [ ] Applied Data Science Lab - WorldQuant University
 - [ ] Elements of AI - University of Helsinki
 - [ ] Machine Learning Specialization - Standford+DeepLearning.AI
-- [ ] Introduction to AI - Harvard University (**Lectures+Notes done. Working on Projects**)
+- [X] Introduction to AI - Harvard University 
 
 > Not going to rush without properly understanding things. Most likely wont complete all these courses in 60 days.
 
 ### Side Quests:
 
-- [ ] Github commit streak 60 days (**Currently at 30 days**)
+- [ ] Github commit streak 60 days (**Currently at 38 days**)
 - [ ] At least one blog post
 - [ ] Some Networking
 - [X] Attend a seminar, bootcamp, or any relevant event if there is a chance (**IT Mela CFC, AWS & GenAI Workshop**)
