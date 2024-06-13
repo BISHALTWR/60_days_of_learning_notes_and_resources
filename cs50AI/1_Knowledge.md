@@ -1,6 +1,6 @@
 # Knowledge
 
-## Knowleedge-Based Agents
+## Knowledge-Based Agents
 
 > Agents that reason by by operating on internal representation of knowledge. 
 
@@ -172,7 +172,7 @@ def check_all(knowledge, query, symbols, model):
 
 ## First order logic:
 
-irst Order Logic (FOL) is a type of logic that allows for more complex expressions than propositional logic. It uses constant symbols to represent objects and predicate symbols to represent relations or functions. For example, in a logic puzzle about Hogwarts, constant symbols could be people or houses, and predicate symbols could express properties or relations, like whether a person belongs to a house.
+First Order Logic (FOL) is a type of logic that allows for more complex expressions than propositional logic. It uses constant symbols to represent objects and predicate symbols to represent relations or functions. For example, in a logic puzzle about Hogwarts, constant symbols could be people or houses, and predicate symbols could express properties or relations, like whether a person belongs to a house.
 
 FOL also uses quantification. Universal quantification (∀) expresses "for all", while existential quantification (∃) expresses "for at least one". For example, ∀x. BelongsTo(x, Gryffindor) → ¬BelongsTo(x, Hufflepuff) means that if any symbol belongs to Gryffindor, it does not belong to Hufflepuff. ∃x. House(x) ∧ BelongsTo(Minerva, x) means that there is at least one symbol that is both a house and that Minerva belongs to it.
 
