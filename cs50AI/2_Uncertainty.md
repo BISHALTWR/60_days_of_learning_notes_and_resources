@@ -252,3 +252,130 @@ print(Counter(data))
     - Start by fixing the values for evidence variables
     - Sample the non-evidence variables using conditional probabilites in the Bayesian network
     - Weight each sample by its likelihood: the probability of all the evidence occuring.
+
+## Markov Models
+
+> Markov Models are used to predict events in the future. 
+
+- Markov Assumption: Current state depends on only a finite number of previous states.
+
+- Markov Chain: Sequencee of random variables where the distribution of each variable follows the Markov assumption. 
+- For constructing Markov chain, we need a transition model that will specify the probability distributions of the next event based on the possible values of current event.
+
+![markov_given](markov_given.png)
+![markov_chain](markov_chain.png)
+
+- Given this Markov Chain, we can now answer questions such as "what is the probability of having four rainy days in a row?"
+
+```py
+from pomegranate import *
+
+# Define starting probabilities
+start = DiscreteDistribution({
+    "sun": 0.5,
+    "rain": 0.5
+})
+
+# Define transition model
+transitions = ConditionalProbabilityTable([
+    ["sun", "sun", 0.8],
+    ["sun", "rain", 0.2],
+    ["rain", "sun", 0.3],
+    ["rain", "rain", 0.7]
+], [start])
+
+# Create Markov chain
+model = MarkovChain([start, transitions])
+
+# Sample 50 states from chain
+print(model.sample(50))
+```
+
+## Hidden Markov Models
+
+> Hidden Markov model is a type of Markov model for a system with hidden states that generated some observed event.
+
+- This means that sometimes, AI has some measurement of the world but no access to the precise state of the world. Those states are called hidden state and whatever data the AI has access are the observations.
+
+- Consider this sensor model:
+![sensor_model](sensor_model.png)
+
+- In this model, if it is sunny, it is most probable that people will not bring umbrellas to the building....
+
+- Sensor Markov Assumption:
+    - The assumption that the evidence variable depends only on the corresponding state. Here, we assume that whether people bring umbrellas to the office depends only on the weather.
+
+- A hidden Markov Modele can be represented in a markov chain with two layers. The top layer X, stands for the hidden state. The botton layer, E, stands for the evidence, the observations that we have.
+
+![hidden_markov](hidden_markov.png)
+
+Based on Hidden Markov Models, we can achieve multiple tasks:
+
+1. **Filtering**: Given observations from the start until now, we can calculate the probability distribution for the current state. For example, given information on when people bring umbrellas from the start of time until today, we can generate a probability distribution for whether it is raining today or not.
+
+2. **Prediction**: Given observations from the start until now, we can calculate the probability distribution for a future state.
+
+3. **Smoothing**: Given observations from the start until now, we can calculate the probability distribution for a past state. For example, we can calculate the probability of rain yesterday given that people brought umbrellas today.
+
+4. **Most Likely Explanation**: Given observations from the start until now, we can calculate the most likely sequence of events.
+
+```py
+from pomegranate import *
+
+# Observation model for each state
+sun = DiscreteDistribution({
+    "umbrella": 0.2,
+    "no umbrella": 0.8
+})
+
+rain = DiscreteDistribution({
+    "umbrella": 0.9,
+    "no umbrella": 0.1
+})
+
+states = [sun, rain]
+
+# Transition model
+transitions = numpy.array(
+    [[0.8, 0.2], # Tomorrow's predictions if today = sun
+     [0.3, 0.7]] # Tomorrow's predictions if today = rain
+)
+
+# Starting probabilities
+starts = numpy.array([0.5, 0.5])
+
+# Create the model
+model = HiddenMarkovModel.from_matrix(
+    transitions, states, starts,
+    state_names=["sun", "rain"]
+)
+model.bake()
+```
+
+- Our model has both sensor model and the transition mode. 
+- Now we see a sequence of observations of whether people brought umbrellas to the building or not, and based on this sequence we will run the model, which will generate and print the most likely explanation.
+
+```py
+from model import model
+
+# Observed data
+observations = [
+    "umbrella",
+    "umbrella",
+    "no umbrella",
+    "umbrella",
+    "umbrella",
+    "umbrella",
+    "umbrella",
+    "no umbrella",
+    "no umbrella"
+]
+
+# Predict underlying states
+predictions = model.predict(observations)
+for prediction in predictions:
+    print(model.states[prediction].name)
+```
+
+- In this case, the output of the program will be rain, rain, sun, rain, rain, rain, rain, sun, sun.
+
