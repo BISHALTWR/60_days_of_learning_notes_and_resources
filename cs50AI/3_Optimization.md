@@ -149,3 +149,105 @@ else:
     - Binary constriant: involves two variables
 
 ## Node consistency
+
+> Node consistency is when all the values in a variable's domain satisfy the variable's unary constraints.
+
+## Arc Consistency
+
+> Arc consistency is when all the values in a variable's domain satisfy the variable's domain satisfy the variable's binary constriants.
+
+- To make X arc-consistent with respect to Y, remove elments of X's domain until every choice for X has a possible choice for Y.
+
+```markdown
+function Revise(csp, X, Y)
+    - revised = false
+    - for x in X.domain:
+        - if no y in Y.domain satisfies constriant for (X,Y):
+            - delete x from X.domain
+            - revised = true
+    - return revised
+```
+
+- If we are interested in making the whole problem arc-consistent and not just one variable with respect to anothe:
+
+```markdown
+# This algorithm is called AC-3 which uses Revise
+
+function AC-3(csp):
+    - queue = all arcs in csp
+    - while queue not-empty:
+        - (X,Y) = Dequeue(queue)
+        - if Revise(csp, X, Y):
+            - if size of X.domain == 0:
+                - return false
+            - for each Z in X.neighbors - {Y}:
+                - Enqueue(queue, (Z,X))
+    - return true
+```
+
+- This algorithm adds all the arcs in the problem to a queue. Each time it considers an arc, it removes it from the queue. Then it runs the Revise algorithm.
+
+## Constriant Satisfaction problem as Search Problem
+
+- Initial condition: empty assignment
+- Actions: Give some variable to value
+- Transition model: Shows how adding the assignment changes the assignment.
+- Goal test: Check if all variables are assigned a value and all constriants are satisfied.
+- Path cost function: all paths have the same cost.
+
+## Backtracking Search
+
+> Type of search algorithm that takes into account the structure of a constriant satisfaction search problem.
+
+```markdown
+# Backtracking Algorithm
+
+function Backtrack(assignment, csp):
+    - if assignment complete:
+        - return assignment
+    - var = Select-Unassigned-Var(assignment, csp)
+    - for value in Domain-Values(var,assignment,csp):
+        - add {var = value} to assignment
+        - result = Backtrack(assignment, csp)
+        - if result != failure:
+            - return result
+        - remove {var = value} from assignment
+    - return failure
+```
+
+- This is a widely used algoritm and multiple libraries already contain an implementation of it.
+
+## Inference
+
+- Although backtracking search is more efficient than simple search, it still takes a lot of computational power.
+
+- We can get more efficient algorithm by interleaving backtracking search with inference.
+
+```markdown
+# Backtracking Algorithm with Inferences
+
+function Backtrack(assignment, csp):
+    - if assignment complete:
+        - return assignment
+    - var = Select-Unassigned-Var(assignment, csp)
+    - for value in Domain-Values(var, assignment, csp):
+        - if value consistent with assignment:
+            - add {var = value} to assignment
+            - inferences = Inference(assignment, csp)
+            - if inferences ≠ failure:
+                - add inferences to assignment
+            - result = Backtrack(assignment, csp)
+            - if result ≠ failure:
+                - return result
+            - remove {var = value} and inferences from assignment
+    - return failure
+```
+
+## Heuristics
+
+> A heuristic, most often than not, will bring to a better result than following a naive approach, but is not guaranteed to do so.
+
+- Some common heuristics are:
+    - Maximum remaining Value heuristic
+    - Degree heuristic
+    - Least constrianing values heuristic

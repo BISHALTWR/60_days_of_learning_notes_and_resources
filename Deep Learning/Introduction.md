@@ -160,3 +160,57 @@ graph LR
 
 ## Vectorizing logistic regression
 
+- We have training input with x vectors stacked in columns of matrix
+
+```py
+Z = np.dot(w.T,X) + b # Broadcasting in python
+A = sigmoid(Z)
+```
+![vectorized_logistic_regression](vectorized_logistic_regression.png)
+
+## Vectorizing logistic Regression's Gradient output
+
+![logistic_gradient](logistic_gradient.png)
+
+## Final Logistic regression code:
+![final_log_grad](final_log_grad.png)
+
+## Broadcasting in Python
+
+```py
+import numpy as np
+
+A = np.array([
+    [56.0, 0.0, 4.4, 68.0],
+    [1.2,104.0,52.0, 8.0],
+    [1.8, 135.0, 99.0, 0.9]
+])
+
+cal = A.sum(axis=0) # Axis = 0 => sum vertically
+print(cal)
+
+percentage = 100*A/cal.reshape(1,4) # Python broadcasting. Reshape is constant time and it changes the size to required.
+
+print(percentage)
+```
+
+- If you added 2*3 matrix and added it to 1*3 matrix, python will copy the row of second matrix to make it 2*3.
+
+- Consider this:
+```py
+import numpy as np
+a = np.random.randn(5)
+print(a) #This is rank 1 array which is neither row nor column vector. So avoid.
+
+print(a.shape)
+print(a.T) #This will look same as a
+
+print(np.dot(a,a.T)) #And this weird
+
+# Instead do this to avoid hard to find errors
+
+a = np.random.randn(5,1)
+```
+
+# Neural Network
+
