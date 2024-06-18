@@ -120,3 +120,53 @@ cost(h) = loss(h) + λcomplexity(h)
 
 > Model of reinforced learning, where a function Q(s,a) outputs the value of taking action a in a state s.
 
+Here is a condensed summary of Q-Learning, broken down into steps and aligned with the detailed explanation you provided:
+
+### Summary of Q-Learning
+
+1. **Initialization:**
+   - Set \( Q(s, a) = 0 \) for all state-action pairs \( (s, a) \).
+   - Define learning rate \( \alpha \) and discount factor \( \gamma \).
+
+2. **Action Selection (Exploration vs. Exploitation):**
+   - Choose an action \( a \) in state \( s \) using an ε-greedy strategy:
+     - With probability \( 1 - \epsilon \), choose the action with the highest Q-value (exploitation).
+     - With probability \( \epsilon \), choose a random action (exploration).
+
+3. **Perform Action:**
+   - Execute the selected action \( a \).
+   - Observe the reward \( r \) and the new state \( s' \).
+
+4. **Q-Value Update:**
+   - Update \( Q(s, a) \) using the formula:
+     \[
+     Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
+     \]
+   - Here, \( r + \gamma \max_{a'} Q(s', a') \) is the new value estimate combining current reward and future reward.
+
+5. **Repeat:**
+   - Update state \( s \) to \( s' \).
+   - Repeat steps 2-4 until convergence or for a predefined number of iterations.
+
+> New value estimate is expressed as a sum of reward(r) and the future reward estimate.
+
+## Unsupervised Learning
+
+> Only input data is present without labels and the AI learns patterns in these data.
+
+
+## Clustering
+
+> Clustering takes input data and organizes it into groups such that similar objects end up in the same group.
+
+- Can bee used in genetic research, image segmentation etc. among others.
+
+## K-means Clustering
+
+> Maps all data points in space and then randomly placees k cluster centers in the space. 
+
+- Each cluster gets assigned all the points that are closest to its center than to any other center.
+
+- Iteratively, cluster center moves to the middle of these points, and then points are reassigned again to the clusters whose centers are closest to them. 
+
+- When, after repeating, each point remains in the same cluster it was before, we have reached an equilibrium and the algorithm is over.
