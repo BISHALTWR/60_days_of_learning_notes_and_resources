@@ -95,13 +95,13 @@ def shortest_path(source, target):
     # TODO
     # State should be (source, movie_id)?
     # Maybe get all movies that the person has starred in and go from there?
-        # Push all to frontier
-        # Chose one and do the same
-        # Use depth first(stack) or breadth first(queue) ?
+    # Push all to frontier
+    # Chose one and do the same
+    # Use depth first(stack) or breadth first(queue) ?
         
-    frontier = StackFrontier()
-    new_node = Node(state=source, parent=None, action=None) # state is source_id, parent, action
-    frontier.add(new_node)
+    frontier = QueueFrontier()
+    start = Node(state=source, parent=None, action=None)  # state is source_id, parent, action
+    frontier.add(start)
 
     explored_num = 0
     explored = set()
@@ -114,10 +114,18 @@ def shortest_path(source, target):
         explored_num += 1
 
         if node.state == target:
-            pass # Backtrack and done
+            path = []
+            while node.parent is not None:
+                path.append((node.action, node.state))
+                node = node.parent
+            path.reverse()
+            return path
 
-
-    pass
+        for movie_id, person_id in neighbors_for_person(node.state):
+            if person_id not in explored and not frontier.contains_state(person_id):
+                child = Node(state=person_id, parent=node, action=movie_id)
+                frontier.add(child)
+	
     # raise NotImplementedError
 
 
