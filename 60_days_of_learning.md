@@ -7,37 +7,37 @@
 ### Things to brush up on:
 
 - Git and GitHub
-- [ ] Just try some stuff
+- [X] Just try some stuff (**Taught Git and Github to Tuition students**)
 - Python: Pandas, Numpy, Scikit-learn, TensorFlow/PyTorch
-- [ ] Introduction to Python Programming - Harvard University
+- [X] Introduction to Python Programming - Harvard University
 - SQL
-- [ ] Introduction to Databases - Harvard University
+- [ ] Introduction to Databases - Harvard University (**started_not_completed**)
 - Data Visualization: Matplot and Seaborn
-- [ ] Something from datacamp and some data visualization on available dataset
+- [ ] Something from datacamp and some data visualization on available dataset (**Started but no concrete results to show**)
 
 ### Courses:
 
-- [ ] Algorithmic Toolbox - Universitty of California San Diego
-- [ ] An Intuitive Introduction to Probability - University of Zurich
+- [ ] Algorithmic Toolbox - Universitty of California San Diego (**2 modules left**)
+- [X] An Intuitive Introduction to Probability - University of Zurich
 - [x] Exploratory Data Analysis - IBM
 - [ ] Applied Data Science Lab - WorldQuant University
 - [ ] Elements of AI - University of Helsinki
 - [ ] Machine Learning Specialization - Standford+DeepLearning.AI
-- [ ] Introduction to AI - Harvard University
+- [ ] Introduction to AI - Harvard University (**Lectures+Notes done. Working on Projects**)
 
 > Not going to rush without properly understanding things. Most likely wont complete all these courses in 60 days.
 
 ### Side Quests:
 
-- [ ] Github commit streak 60 days
+- [ ] Github commit streak 60 days (**Currently at 30 days**)
 - [ ] At least one blog post
 - [ ] Some Networking
-- [ ] Attend a seminar, bootcamp, or any relevant event if there is a chance
-- [ ] 75 hard for improving health
+- [X] Attend a seminar, bootcamp, or any relevant event if there is a chance (**IT Mela CFC, AWS & GenAI Workshop**)
+- [ ] 75 hard for improving health. (**Will start with public commitment soon**)
 
 
 ## Project goals:
 
 - Create a simple web app to deploy an ML Model
 - Work on some projects in kaggle
-- Start working on college project which will be based on AI.
+- Start working on college project which will be based on AI. (**Literature review, proposal done. Currently in learning Phase**)
