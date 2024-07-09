@@ -42,7 +42,7 @@
     
 - Linear regression model representation
 
-## Notation
+### Notation
 Here is a summary of some of the notation you will encounter.   
 
 | General Notation | Description | Python (if applicable) |
@@ -72,3 +72,51 @@ Here is a summary of some of the notation you will encounter.
         - Squared Error cost function is widely used for regression problems.
     - To build intuition, lets fix b to 0 and change w, by changing w and calculating J, you can plot and get a parabola. Pick a w to minimize J.
     - If you plot J(w,b), you get a 3D bowl like thing.
+
+## Gradient Descent
+
+> Using derivative at the point to minimize the cost
+
+- Taking steps along the direction with highest gradient.
+- You might end up at different minimum (local minimum) depending on initial value.
+
+### Implementing Gradient descent algorithm
+
+- Update rule for gradient descent:
+    $$
+    w := w - \alpha \frac{\partial J(w, b)}{\partial w}
+    $$
+    $$
+    b := b - \alpha \frac{\partial J(w, b)}{\partial w}
+    $$
+- Here alpha is learning rate.
+
+- Simultaneous update for gradient descent:
+    $$
+    \text{temp}_w := w - \alpha \frac{\partial J(w, b)}{\partial w}
+    $$
+    $$
+    \text{temp}_b := b - \alpha \frac{\partial J(w, b)}{\partial b}
+    $$
+    $$
+    w := \text{temp}_w
+    $$
+    $$
+    b := \text{temp}_b
+    $$
+
+- Gradient descent is always implemented in simultaneous update form. It works better.
+
+### Choosing Learning Rate
+
+- If α is too small, gradient descent may be slow.
+- If α is too large, gradient descent may overshoot and fail to converge(may even diverge)
+
+- If you are at local minima, derivative is 0 so the formula doesn't update the parameters.
+- Whereever you start, with fixed learning rate, the gradient and hence the amount of change of parameter will decrease as you approach the minima.
+
+![gradient_descent](gradient_descent.png)
+
+### Batch Gradient descent
+
+> Each step of gradient descent uses all the training examples.
