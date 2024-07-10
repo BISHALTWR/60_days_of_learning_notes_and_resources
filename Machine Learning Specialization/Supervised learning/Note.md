@@ -120,3 +120,50 @@ Here is a summary of some of the notation you will encounter.
 ### Batch Gradient descent
 
 > Each step of gradient descent uses all the training examples.
+
+## Multiple Linear Regression
+
+> If the output depends on multiple values
+$$
+\vec{x} = [x_1, x_2, x_3, \ldots, x_n]
+$$
+
+$$
+f(x) = w_1x_1 + w_2x_2 + w_3x_3 + \ldots + w_nx_n + b
+$$
+
+- This can be written as:
+$$
+f(\vec{x}) = \vec{w}.\vec{x} + b
+$$
+
+## Vectorization
+
+> It makes more efficient and shorter code.
+
+```py
+w = np.array([1.0, 2.5, -3.3])
+b = 4
+x = np.array([10, 20, 30])
+```
+- Method 1:
+```py
+f = w[0]*x[0] + w[1]*x[1] + w[2]*x[2] + b
+```
+
+- Method 2:
+```py
+f = 0
+for j in range(0, n):
+    f = f + w[j]*x[j]
+f = f + b
+```
+
+- Method 3: **Vectorization**
+
+```py
+f = np.dot(w,x) + b # Faster as it can use parallelization
+```
+
+![vectorization](vectorization.png)
+
