@@ -167,3 +167,67 @@ f = np.dot(w,x) + b # Faster as it can use parallelization
 
 ![vectorization](vectorization.png)
 
+## Gradient Descent with Vectorization
+
+To perform gradient descent with vectorization, the update rules for the parameters w_j (weight vector) and b (bias) are as follows:
+
+
+- Repeat until convergence:
+    $$
+    w_j := w_j - \alpha \frac{\partial J}{\partial w_j} \\
+    b := b - \alpha \frac{\partial J}{\partial b}
+    $$
+
+- Update rule for multiple regression:
+    $$
+    w_j := w_j - \alpha \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_j^{(i)}
+    $$
+
+    $$
+    b := b - \alpha \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) - y^{(i)} \right)
+    $$
+
+## Normal equation
+
+- Can be used for linear regression
+- Can solvee for w, b without iteration
+
+- But this doesn't generalize to other learning algorithm
+- Slow when number of features is large.
+- Might be used in some ML libraries.
+
+## Feature Scaling
+
+- Consider house prediction,
+    - Size(sq. feet) is in large range(300 - 2000)
+    - No. of bedrooms is in small range(0-5)
+    - A good algorithm will choose smaller weight for large values and larger for smaller values. (Based on effect too)
+
+- If you scale the features, (between 0 and 1 perhaps)
+    - comparable range of values => Faster gradient descent.
+
+- Options:
+    - Dividing by max value
+    - Mean normalization: Subtract the mean and divide by difference(between max and min)
+    - Z-score normalization: subtract mean and divide by standard deviation
+
+## Checking Gradient descent for convergence
+
+- Plot J vs Iteration
+    - This curve is called learning curve
+    - J should decrease with each iteration
+        - Else learning rate might not be good
+    - After some iterations, it starts decreasing very slowly
+        - Iterations needed might vary
+    - If the curve is wavy or increasing:
+        - Buggy code or learning rate is too large
+        - Check by using very small alpha, if that doesn't work maybe the code is buggy
+
+- Automatic convergence test:
+    - Set a epsilon: around 0.001
+    - If J decreses by less than epsilon stop.
+    - Choosing appropriate epsilon is hard
+
+## Feature Engineering
+
+> Creating new feature from existing ones.
