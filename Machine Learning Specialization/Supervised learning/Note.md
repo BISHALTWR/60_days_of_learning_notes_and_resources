@@ -231,3 +231,68 @@ To perform gradient descent with vectorization, the update rules for the paramet
 ## Feature Engineering
 
 > Creating new feature from existing ones.
+
+## Classification Problems
+
+> Associating value(or values) with class/category.
+
+- Binary classification => Two classes (yes/no, true/false, positive/negative)
+
+- Linear regression doesn't work as it gives continuous value.
+    - But you could say if y > 0.5 => class 1 and class 2 if y <= 0.5
+    - Not a good idea as adding  single value can change the regression line and classification by a lot.
+
+- Types:
+    - Spam classification
+    - Is transaction fraudulent?
+    - Is tumor malignant?
+
+## Logistic regression
+
+- Sigmoid/Logistic function:
+    - outputs values between 0 and 1
+    - The sigmoid function \(g(z)\) is defined as:
+        $$
+        g(z) = \frac{1}{1 + e^{-z}}
+        $$
+        where \(0 < g(z) < 1\).
+    - When z is very large +ve no. => g(z) tends to 1
+    - When z is very large -ve no. => g(z) tends to 0
+    - passes vertical axis at 0.5
+
+- Steps:
+    - Compute = z = w.x + b
+    - f(x) = g(z)
+
+- Interpreting the logistic regression output
+    - Think of output as probability that class is 1
+    - If output is 0.7, then there is 70% chance that class is 1.
+
+> The decision boundary doesn't have to be linear as above.
+
+- You can change expression of z to sth like quadratic, circular, elliptical, and even sinusoidal
+
+- Logistic Regression Loss Function:
+    $$
+    J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(h_\theta(x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta(x^{(i)}))]
+    $$
+
+## Cost function of Logistic regression
+
+- Squared error function
+    - Gives non-convex cost function
+- Logistic log function
+
+- Logistic Regression Loss Function for individual examples:
+    $$
+    \text{Cost}(h_\theta(x^{(i)}), y^{(i)}) = 
+    \begin{cases} 
+    -\log(h_\theta(x^{(i)})) & \text{if } y^{(i)} = 1 \\
+    -\log(1 - h_\theta(x^{(i)})) & \text{if } y^{(i)} = 0
+    \end{cases}
+    $$
+
+
+## Gradient descent
+
+> Similar to that of linear regression. Lets look at code later.
