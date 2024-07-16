@@ -296,3 +296,41 @@ To perform gradient descent with vectorization, the update rules for the paramet
 ## Gradient descent
 
 > Similar to that of linear regression. Lets look at code later.
+
+## Overfitting, Underfitting 
+
+> Underfit => model has high bias and doesn't fit the training set very well.
+
+> Overfit => Fits the training set extremely well but doesn't generalize to new unseen data. High variance(a little change in training data will result in totally different model).
+
+> Generalization => fit training set pretty well and predicts correctly for unseen data 
+
+## Addressing overfitting
+
+- Select features to include/exclude (feature selection)
+    - features with insufficient data
+    - irrelevant data
+
+- Reguralization:
+    - Keep the features but reduce their weight(effect)
+
+- Collect more data
+
+## Cost function with reguralization
+
+> Penalize large weights
+
+- Linear Regression Cost Function with L2 Regularization:
+    $$
+    J(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2
+    $$
+
+- Logistic Regression Cost Function with L2 Regularization:
+    $$
+    J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(h_\theta(x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta(x^{(i)}))] + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2
+    $$
+
+- where `lambda` is regularization parameter
+    - If super large, underfit
+    - If super small, overfit (like not having regularization)
+
