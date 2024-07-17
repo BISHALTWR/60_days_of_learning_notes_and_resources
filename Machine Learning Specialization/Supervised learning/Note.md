@@ -334,3 +334,4 @@ To perform gradient descent with vectorization, the update rules for the paramet
     - If super large, underfit
     - If super small, overfit (like not having regularization)
 
+> Done
