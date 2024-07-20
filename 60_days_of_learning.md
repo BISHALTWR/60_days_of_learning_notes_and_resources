@@ -13,7 +13,7 @@
 - SQL
 - [ ] Introduction to Databases - Harvard University (**started_not_completed**)
 - Data Visualization: Matplot and Seaborn
-- [ ] Something from datacamp and some data visualization on available dataset (**Started but no concrete results to show**)
+- [X] Something from datacamp and some data visualization on available dataset
 
 ### Courses:
 
@@ -30,14 +30,14 @@
 ### Side Quests:
 
 - [ ] Github commit streak 60 days (**Currently at 38 days**)
-- [ ] At least one blog post
-- [ ] Some Networking
+- [ ] At least one blog post (**Not feeling qualified for this**)
+- [ ] Some Networking (**X**)
 - [X] Attend a seminar, bootcamp, or any relevant event if there is a chance (**IT Mela CFC, AWS & GenAI Workshop**)
-- [ ] 75 hard for improving health. (**Will start with public commitment soon**)
+- [ ] 75 hard for improving health. (**Started Day 15/75 done**)
 
 
 ## Project goals:
 
-- Create a simple web app to deploy an ML Model
-- Work on some projects in kaggle
-- Start working on college project which will be based on AI. (**Literature review, proposal done. Currently in learning Phase**)
+- [ ] Create a simple web app to deploy an ML Model
+- [ ] Work on some projects in kaggle
+- [X] Start working on college project which will be based on AI. (**Literature review, proposal done. Currently in learning Phase**)
