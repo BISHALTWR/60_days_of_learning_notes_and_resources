@@ -29,7 +29,7 @@
 
 ### Side Quests:
 
-- [ ] Github commit streak 60 days (**Currently at 38 days**)
+- [ ] Github commit streak 60 days (**Currently at 52 days**)
 - [ ] At least one blog post (**Not feeling qualified for this**)
 - [ ] Some Networking (**X**)
 - [X] Attend a seminar, bootcamp, or any relevant event if there is a chance (**IT Mela CFC, AWS & GenAI Workshop**)

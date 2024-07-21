@@ -110,3 +110,62 @@ model.fit(x,y) # Training
 
 model.predict(x_new) # Inference
 ```
+
+## Forward propagation
+
+```py
+x = np.array([200, 17])
+
+# Let
+w1_1 = np.array([1,2])
+b1_1 = np.array([-1])
+z1_1 = np.dot(w1_1, x)+ b1_1
+a1_1 = sigmoid(z1_1)
+
+# similarly compute a1_2
+# similary for others....
+
+# Now for a1,
+
+a1 = np.array([a1_1, a1_2, a1_3]) #output from layer 1
+
+# Similarly for a1
+
+# using w2_1(1*3) and b2_1 calculate z2_1
+```
+
+## General implementation of forward propagation
+
+```py
+W = np.array([
+    [1, -3, 5]
+    [2, 4, -6]
+])
+
+b = np.array([-1, 1, 2])
+
+a_in = np.array([-2, 4])
+```
+
+- Code looks like this:
+```py
+def dense(a_in, W, b):
+    units = W.shape[1]
+    a_out = np.zeros(units)
+    for j in range(units):
+        w = W[:,j]
+        z = np.dot(w,a_in) + b[j]
+        a_out[j] = g(z) #g() is sigmoid
+    return a_out
+```
+
+- Now sequential:
+```py
+def sequential(x):
+    a1 = dense(x, W1, b1)
+    a2 = dense(a1, W2, b2)
+    a3 = dense(a2, W3, b3)
+    a4 = dense(a3, W4, b4)
+    f_x = a4
+    return f_x
+```
