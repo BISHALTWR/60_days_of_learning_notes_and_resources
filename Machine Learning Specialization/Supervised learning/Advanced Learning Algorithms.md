@@ -169,3 +169,37 @@ def sequential(x):
     f_x = a4
     return f_x
 ```
+
+## How neural networks are implemented efficiently
+
+> Vectorization is the way
+
+```py
+import numpy as np
+C = np.matmul(A, B) # this can efficiently multiply matrix
+```
+
+- You can multiply a_transpose and w to get dot product
+```py
+# matrix is just different vectors stacked in column
+
+a = np.array([[1, -1, 0.1],
+    [2, -2, 0.2]])
+a_t = a.t # this is weird
+
+w = np.array([[3,5,7,9],
+        [4,6,8,0]]
+)
+
+z = np.matmul(AT, W)
+
+# or z = a @ w works as well
+```
+
+- Dense layer vectorization
+```py
+def dense(AT, w, b)
+    z = np.matmul(AT, w) + b
+    a_out = g(z)
+    return a_out
+```
