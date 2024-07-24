@@ -203,3 +203,193 @@ def dense(AT, w, b)
     a_out = g(z)
     return a_out
 ```
+
+## Training own neural network in TensorFlow
+
+- Consider layer1(25 units), layer2(15 units) and layer3(1 unit)
+
+```py
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential([
+    Dense(units=25, activation='sigmoid'),
+    Dense(units=15, activation='sigmoid'),
+    Dense(units=1, activation='sigmoid'),
+])
+
+from tensorflow.losses import BinaryCrossEntropy
+model.compile(loss = BinaryCrossentropy())
+model.fit(X, Y, epochs=100) # X and Y make up training set
+```
+
+- Training Details:
+    - For logistic regression we did:
+        - specify how to compute output given input x and parameters w,b
+        `z = np.dot(w,x) + b`
+        `f_x = 1/(1+np.exp(-z))`
+        - Specify loss and cost
+        `loss = -y * np.log(f_x) - (1-y)*np.log(1-f_x)`
+        - Train on data to minimize loss function
+        `w = w - alpha * dj_dw`
+        `b = b - alpha * dj_db`
+    - For neural network:
+        - Specify the model
+        `model = Sequential([Dense(...), ...])`
+        - Binary cross entropy loss
+        `model.compile(loss=BinaryCrossentropy)`
+        - Train the model
+        `model.fit(X, y, epochs=100)`
+
+**Binary Cross entropy loss is logistic loss**
+
+- `model.compile(loss = MeanSquaredError())` can be used for regression
+
+- `model.fit(X,y, epochs=100)` is a way to ask TF to train on given data and minimize the loss
+
+## Activation function
+
+- ReLU : Rectified Linear Unit
+- Sigmoid activation function => most widely used
+- Linear activation function
+
+- If al g(x) of neurons are linear, you just have a linear regression
+
+
+## Multiclass CLassification
+
+> In binary classification, we used logistic regression which had one curve as decision boundary
+
+### Softmax regression
+
+> Generalization of logistic regression.
+
+- In logistic:
+    - calculate z = w.x + b
+    - then pass it to sigmoid function g(z)
+
+- Consider 4 possible outputs
+
+- First calculate z1, z2, z3, z4
+- Then calculate a1, a2, a3 and a4
+
+$$ \text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j} e^{z_j}} $$
+
+- a1 is probability if class 1.
+- Sum of all probability is 1.
+- a1 is function of z1 through zN
+- zs are called logits
+
+### Cost function for softmax regression
+
+$$ L(\theta) = - \sum_{i=1}^{C} y_i \log(\hat{y}_i) $$
+
+- Cross entropy loss is used
+
+### Neural Network with Softmax output
+
+- Code
+```py
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential([
+    Dense(units=25, activation='relu'),
+    Dense(units=15, activation='relu'),
+    Dense(units=10, activation='softmax')
+])
+
+from tensorflow.keras.losses import SparseCategoricalCrossentropy
+model.compile(loss = SparseCategoricalCrossentropy())
+
+model.fit(X,Y, epochs=100)
+```
+> This code isn't recommended
+
+### Improved implementation of softmax
+
+```py
+x1 = 2.0/1000
+print(f"x1:.18f")
+```
+- VS
+```py
+x2 = 1 + (1/1000) - (1 - 1/1000)
+print(f"x2: .18f")
+```
+
+> Here the second one produces more round off error
+
+![numerical_error](numerical_error.png)
+
+- For softmax
+
+```py
+# use 
+model.compile(loss=SparseCategoricalCrossEntropy(from_logits=True))
+# instead of
+model.compile(loss=SparseCategoricalCrossEntropy())
+```
+
+## Multilabel Classificaton
+
+> When multiple outputs are possible. (Like person, car and bus detection in one image)
+
+## Advanced Optimization
+
+- Recall gradient descent:
+    - w = w - alpha*gradient_wrt_w
+
+> Adam algorithm : Adaptive movement estimation
+
+- Adam algorithm changes learning rate during training to improve efficiency.
+
+- How?
+    - If w or rb keeps moving in same direction, increase alpha
+    - If w keeps oscillating, decrease
+
+- How?
+```py
+model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate=1e-3), loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True))
+```
+
+## Additional Layer types
+
+- We have used Dense layer types, which use all the activation from previous layer
+
+- Convolutional layer: 
+    - Each neuron only looks at part of previous layer's outputs:
+        - Faster computation
+        - Less prone to overfitting
+        - Needs less training data
+
+- Consider EKG(Electro Cardiogram) signal:
+    - x = [x1, x2, ... xn] which corresponds to "height" of EKG signal.
+    - In first hidden layer:
+        - One unit will look at x1 to x20
+        - Another at x11 to x30
+        ....
+        - last will look at x81 - x100
+    - In second layer:
+        - One unit will look at first 5 o/p of previous layer
+        - Another 3-7
+        - Another 5-9
+    - In third layer:
+        - 3 units
+    - At last:
+        - 1 unit with sigmoid activation => output is either there is irregularity or not
+
+## Backpropagation
+
+> sympy can do derivative (just for learning)
+
+- Computational graph
+    - Consider a neural network with just 1 layer with 1 node: a = wx+b
+    - Cost function is: J(w,b) = 1/2(a-y)^2
+
+- Computational graph and derivative:
+![back_propagation_with_computational_graph](computational_graph.png)
+
+> Backprop is just efficient algorithm to calculate derivative which is used by gradient descent to update parameters(weights and bias)
