@@ -393,3 +393,103 @@ model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate=1e-3), loss=tf.
 ![back_propagation_with_computational_graph](computational_graph.png)
 
 > Backprop is just efficient algorithm to calculate derivative which is used by gradient descent to update parameters(weights and bias)
+
+## Deciding what to try next
+
+- In case of issue(large erros), options are:
+    - more training examples => fixes high variance (overfitting)
+    - smaller set of features => fixes high variance
+    - additional features => fixes high bias (underfitting)
+    - adding polynomial features => fixes high bias
+    - try decreasing lambda(regularization parameter) => fixes high bias
+    - try increasing lambda => fixes high variance
+
+- Diagnostic:
+    - A test that you run to gain insight into what is/isn't working with a learning algorithm, to gain guidance into improving its performance.
+
+    - Can take time to implement but is often worth it.
+
+## Evaluating a model
+
+- Overfitting: model fits training data well but doesn't generalizee to new examples not in training set.
+
+- Split the available data into two subsets:
+    - training set <- Train using this
+    - Test set <- Test generalization using this
+
+- One way to choose a model:
+    - Try different model, calculate test error for all and choose best.
+    - Not a good idea as model was chosen using test data only. w,b are overly optimistic estimate of generalization error on trining data.
+
+- Another way: test, cross validation and test set:
+    - Split in sth like 60-20-20
+    - Evaluate cross validation error for models
+    - Choose best
+    - Since you haven't fit any parameter to test set upto this point, you can estimate generalization error using the test set
+
+### Disgnosing bias and variance
+
+- If bias is high: Training accuracy && Testing accuracy both low (underfitting)
+
+- If variance is high: Training accuracy >> Testing accuracy
+
+- If just right: Training accuracy and Testing accuracy is almost same
+
+- In case of train and cross validation error:
+![bias_variance](bias_variance.png)
+
+### Regularization and bias/variance
+
+> Regularization punishes higher value of weight.
+
+$$ J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(h_\theta(x^{(i)}), y^{(i)}) + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2 $$
+
+- Lambda is regularization parameter lambda.
+- Large lambda often results in high bias
+- Smaller lambda often results in high variance
+- A good selection of lambda acts well
+- lambda = 0 => not using regularization
+
+### Establishing a baseline level of performance
+
+- Consider speech recognition examples:
+    - Training error is 10.8% (This might seem high error)
+    - Cross validation error is 14.8%
+    - If Human level performance is 10.6% (Now training error doesn't seem that high and cross validation error is the issue)
+
+- What is the level of error you can reasonably hope to get to?
+    - Human level performance
+    - Competing algorithm performance
+    - Guess based on experience
+
+### Learning curves
+
+- Jcv and Jtrain against training set size
+
+![high_bias](high_bias.png)
+- Here increasing trainig size won't decrease error.
+
+![high_variancee](high_variance.png)
+- Here increasing training data is likely to help
+
+## Bias/variance and neural networks
+
+> Large neural networks are low bias machines
+
+![neural_network_and_bias_variance](neural_network_and_bias_variance.png)
+
+- Bigger network requires more powerful computers (mainly GPU)
+
+- A large neeural network will usually do as well or better than a smaller one so long as regularization is chosen appropriately and there is enough data.
+
+![nn_regularization](nn_regularization.png)
+
+## Iterative loop of ML developmnet
+
+> Choose architecture, train, diagnosis
+
+### Error analysis
+
+> What cases have the most error? Try solving that first.
+
+- Sample if the no. of errors is high.
