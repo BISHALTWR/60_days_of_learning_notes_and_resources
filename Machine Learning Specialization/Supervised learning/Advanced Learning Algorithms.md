@@ -493,3 +493,21 @@ $$ J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(h_\theta(x^{(i)}), y^{(i)}
 > What cases have the most error? Try solving that first.
 
 - Sample if the no. of errors is high.
+
+### Adding data
+
+> This is data engineering
+- Techniques: 
+    - Adding more data of everything. "Honeypot" project
+    - Adding more data of types where error analysis has indicated it might help.
+    - Data augmentation: mostly for image and speech data.
+        - Rotating, enlarging, shrinking, changing contrast, adding noise/distortion.
+    - You can create synthetic data for OCR
+        - take screenshot with different font and color and some data augmentation like above
+
+### Transfer learning
+
+> Train on large dataset, then for your task just train the model again but for last layer's parameters. This is called fine tuning.
+
+- It doesn't require much data.
+- Just get pretrained model and finetune.
