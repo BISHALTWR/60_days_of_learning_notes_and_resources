@@ -7,37 +7,38 @@
 ### Things to brush up on:
 
 - Git and GitHub
-- [X] Just try some stuff (**Taught Git and Github to Tuition students**)
+- <span style="color:green">[X] Just try some stuff (**Taught Git and Github to Tuition students**)</span>
 - Python: Pandas, Numpy, Scikit-learn, TensorFlow/PyTorch
-- [X] Introduction to Python Programming - Harvard University
+- <span style="color:green">[X] Introduction to Python Programming - Harvard University</span>
 - SQL
-- [ ] Introduction to Databases - Harvard University (**started_not_completed**)
+- <span style="color:yellow">[ ] Introduction to Databases - Harvard University (**4/8 weeks done**)</span>
 - Data Visualization: Matplot and Seaborn
-- [X] Something from datacamp and some data visualization on available dataset
+- <span style="color:green">[X] Something from datacamp and some data visualization on available dataset</span>
 
 ### Courses:
 
-- [X] Algorithmic Toolbox - Universitty of California San Diego
-- [X] An Intuitive Introduction to Probability - University of Zurich
-- [x] Exploratory Data Analysis - IBM
-- [ ] Applied Data Science Lab - WorldQuant University
-- [ ] Elements of AI - University of Helsinki
-- [ ] Machine Learning Specialization - Standford+DeepLearning.AI
-- [X] Introduction to AI - Harvard University 
+- <span style="color:green">[X] Algorithmic Toolbox - Universitty of California San Diego</span>
+- <span style="color:green">[X] An Intuitive Introduction to Probability - University of Zurich</span>
+- <span style="color:green">[x] Exploratory Data Analysis - IBM</span>
+- <span style="color:red">[ ] Applied Data Science Lab - WorldQuant University<span>
+- <span style="color:green">[ ] Elements of AI - University of Helsinki<span>
+- <span style="color:yellow">[ ] Machine Learning Specialization - Standford+DeepLearning.AI(**Currently working on this**)</span>
+- <span style="color:green">[X] Introduction to AI - Harvard University</span>
 
 > Not going to rush without properly understanding things. Most likely wont complete all these courses in 60 days.
 
 ### Side Quests:
 
-- [ ] Github commit streak 60 days (**Currently at 52 days**)
-- [ ] At least one blog post (**Not feeling qualified for this**)
-- [ ] Some Networking (**X**)
-- [X] Attend a seminar, bootcamp, or any relevant event if there is a chance (**IT Mela CFC, AWS & GenAI Workshop**)
-- [ ] 75 hard for improving health. (**Started Day 15/75 done**)
-
+- <span style="color:green">[X] Github commit streak 60 days (**Currently at 61 days**)</span>
+- <span style="color:red">[ ] At least one blog post (**Not feeling qualified for this**)<span style="color:green">
+- <span style="color:green">[X] Some Networking (**X**)</span>
+- <span style="color:green">[X] Attend a seminar, bootcamp, or any relevant event if there is a chance (**IT Mela CFC, AWS & GenAI Workshop**)<span>
+- <span style="color:red">[ ] 75 hard for improving health. (**Failed at day 22**)<span>
 
 ## Project goals:
 
-- [ ] Create a simple web app to deploy an ML Model
-- [ ] Work on some projects in kaggle
-- [X] Start working on college project which will be based on AI. (**Literature review, proposal done. Currently in learning Phase**)
+- <span style="color:red">[ ] Create a simple web app to deploy an ML Model</span>
+- <span style="color:red">[ ] Work on some projects in kaggle<span>
+- <span style="color:green">[X] Start working on college project which will be based on AI. (**Literature review, proposal done. Currently in learning Phase**)</span>
+
+<center><h1> Satisfied? 8/10. I had some lazy-days but did my best <h1><center>

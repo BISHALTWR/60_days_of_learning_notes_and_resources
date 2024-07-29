@@ -511,3 +511,39 @@ $$ J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(h_\theta(x^{(i)}), y^{(i)}
 
 - It doesn't require much data.
 - Just get pretrained model and finetune.
+
+## Error Metrics for Skewed datasets
+
+- Consider rare disease classification example
+- If only 0.5% patient have the disease:
+    - if the model always diagnoses no disease, it will have high accuracy so, this is a good measure
+
+### Precision/Recall
+
+- Classify result in four groups:
+    - True Positive
+    - True Negative
+    - False Positive
+    - False Negative
+
+- Precision = (True positives)/(Predicted Positive)
+- Recall = (True Positives)/(Actual Positives)
+
+### Tradeoff between precision and recall
+
+> Consider logistic regression with threshold 0.5
+
+- If you increase threshold, it will increase precision but decrease recall
+- If you decrease threshold, it will decrease precision but increase recall
+
+- For most algorithm, there is tradeoff between precision and threshold.
+
+### F1 Score:
+
+- It lets you tradeoff precision and algorithm more easily.
+
+- You could take average of precision and recall but it is not good method. (Consider 1 precision and 0 recall). So, you use F1 score.
+
+- take average of 1/P and 1/R then take its reciprocal. (It is actually double of Harmonic mean)
+
+- It will punish algorithms with low Precision or recall.
