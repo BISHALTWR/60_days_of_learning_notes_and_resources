@@ -11,7 +11,7 @@
 - Python: Pandas, Numpy, Scikit-learn, TensorFlow/PyTorch
 - <span style="color:green">[X] Introduction to Python Programming - Harvard University</span>
 - SQL
-- <span style="color:yellow">[ ] Introduction to Databases - Harvard University (**4/8 weeks done**)</span>
+- <span style="color:orange">[ ] Introduction to Databases - Harvard University (**4/8 weeks done**)</span>
 - Data Visualization: Matplot and Seaborn
 - <span style="color:green">[X] Something from datacamp and some data visualization on available dataset</span>
 
@@ -22,7 +22,7 @@
 - <span style="color:green">[x] Exploratory Data Analysis - IBM</span>
 - <span style="color:red">[ ] Applied Data Science Lab - WorldQuant University<span>
 - <span style="color:green">[ ] Elements of AI - University of Helsinki<span>
-- <span style="color:yellow">[ ] Machine Learning Specialization - Standford+DeepLearning.AI(**Currently working on this**)</span>
+- <span style="color:orange">[ ] Machine Learning Specialization - Standford+DeepLearning.AI(**2/3 courses done**)</span>
 - <span style="color:green">[X] Introduction to AI - Harvard University</span>
 
 > Not going to rush without properly understanding things. Most likely wont complete all these courses in 60 days.

@@ -95,3 +95,47 @@
 - You could pick a random subseet of k < n features and allow the algorithm to only choose from that subset of features. Mostly k is taken squareroot of n.
 
 - Then you create multiple decision trees => **Random Forest Algorithm**
+
+## Boosted tree
+
+> While building next decision tree in ensemble, we focus more on misclassified examples.
+
+## XGBoost (eXtreme Gradient Boosting)
+
+- Open source implementation of boosted trees
+- Fast efficient implementation
+- Good choice of default splitting criteria and criteria for when to stop splitting
+- Built in regularization to prevent overfitting
+- Highly competitive algorithm for machine learning competitions.
+
+- For Classification
+```py
+from xgboost import XGBClassifier
+
+model = XGBClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+```
+
+- For regression
+```py
+from xgboost import XGBRegressor
+
+model = XGBRegressor()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+```
+
+## When to use decision trees?
+
+- Decision trees and Tree ensembles:
+    - work well on tabular(structured) data
+    - Not recommended for unstructured data (images, audio, text)
+    - Fast (mostly training)
+    - Small decision trees may be human interpretable
+
+- Neural networks:
+    - works well on all type of data, including tabular and unstructured data
+    - may be slower than a decision tree
+    - Works with transfer learning
+    - It might be easier to string together multiple neural networks.
