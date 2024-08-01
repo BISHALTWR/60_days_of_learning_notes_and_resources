@@ -67,3 +67,4 @@ $$
             - Run with various values of k and chose the value where the rate of decrease of cost function is low.
             - This is ambiguous a lot of time.
         - Evaluate k-means based on how well it performs on the later purpose.
+
