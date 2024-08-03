@@ -126,4 +126,5 @@ $$
 
 - Error analysis:
     - p(x) is comparable for normal and anomalous examples
-    - 
+
+- You can use vectorization to calculate mean, standard deviation, precision, recall, F1 score etc. 
