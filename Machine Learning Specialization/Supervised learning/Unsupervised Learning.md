@@ -128,3 +128,31 @@ $$
     - p(x) is comparable for normal and anomalous examples
 
 - You can use vectorization to calculate mean, standard deviation, precision, recall, F1 score etc. 
+
+# Recommender systems
+
+## Collaborative filtering
+- Consider predicting movie ratings
+    - Suppose there are m movies and n users.
+    - Not every user rates all movies.
+    - Suppose we have set of features for both movies.
+        - For each user based on those set of features, predict rating. (Just linear regression)
+            - Cost function is just mean squared error.
+    - If you don't have access for those set of features    
+        - You come up with features x1 and x2.., assume w and b
+        - To learn x(i) for movie i, so that for all users that have rated movie i, difference is minimized. (mean squared error)
+        - For m, movies sum the diffrence above.
+        - You add cost function for w,b and for x1 and x2 together to get cost function.
+        - i.e. Cost function is function of w, b and x.
+        - You can use Gradient descent but with three parameters now.
+    
+## Binary labels: favs, likes and clicks
+
+- Consider online shopping.
+    - Label could denote if user purchased after being shown item.
+        - if user fav/like item
+        - if spend at least 30s in item description.
+    - Here we can predict y based on w,x and b.
+        - Using sigmoid perhaps
+    - Loss becomes Binary Cross entropy loss
+    
