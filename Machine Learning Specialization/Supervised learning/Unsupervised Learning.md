@@ -155,4 +155,57 @@ $$
     - Here we can predict y based on w,x and b.
         - Using sigmoid perhaps
     - Loss becomes Binary Cross entropy loss
+
+## Mean Normalization
+
+- Take all ratings and calculate average for each movie to get mean vector.
+- Then substract the mean from each rating of movie.
+- Then w.x+b+mean is used instead of w.x+b
+
+- It helps algorithm run faster and perform better.
+
+## Tensorflow for collaborative filtering
+
+- Custom training loop with auto diff auto grad
+```py
+w = tf.Variable(3.0)
+x = 1.0
+y = 1.0 #target value
+alpha = 0.01
+
+iteration = 30
+for iter in range(iterations):
+    with tf.GradientTape() as tape:
+        fwb = w*x
+        costJ = (fwb-y)**2
     
+    [dJdw] = tape.gradient(costJ, [w])
+
+    w.assign_add(-alpha * dJdw) #tf variables require special function to modify
+```
+
+- Implementation
+
+```py
+optimizer = keras.optimizers.Adam(learning_rate=1e-1)
+
+iterations = 200
+for iter in range(iterations):
+
+    with tf.GradientTape() as tape:
+        cost_value = cofiCostFuncV(X,W,b,Ynorm, R, num_users, num_movies, lambda)
+    
+    grads = tape.gradient( cost_value, [X,W,b])
+
+    optimizer.apply_gradients(zip(grade, [X, W, b]))
+```
+
+## Limitations of Collaborative Filtering
+
+- Cold start problem. How to
+    - rank new items that few users have rated?
+    - show something reasonable to new users who have rated few items?
+
+- Use side/additional information about items or users:
+    - Item: Genre, movie stars, studio ...
+    - User: Demographics, expressed preferrence
