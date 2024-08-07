@@ -209,3 +209,9 @@ for iter in range(iterations):
 - Use side/additional information about items or users:
     - Item: Genre, movie stars, studio ...
     - User: Demographics, expressed preferrence
+
+## Content-based filtering
+
+> Recommend items to you based on features of user and item to find a good match
+
+now instead of w.x+b we use v(u).v(m) wjere v(u) is user vector and v(m) is movie vector.
