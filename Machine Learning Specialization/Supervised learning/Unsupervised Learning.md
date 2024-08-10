@@ -215,3 +215,81 @@ for iter in range(iterations):
 > Recommend items to you based on features of user and item to find a good match
 
 now instead of w.x+b we use v(u).v(m) wjere v(u) is user vector and v(m) is movie vector.
+
+## Deep learning for content based filtering
+
+![content_based_filtering](content_based_filtering.png)
+![combined_content_based_filtering](combined_content_based_filtering.png)
+
+> Recommendations can be *calculated* ahead of time
+
+## Recommending from a large catalogue
+
+- Two steps:
+    - Retrieval:
+        - Generate large list of plausible item candidates
+        - Combine retrieved items into list, remove duplicates and already watched/purchased items
+    - Ranking:
+        - Take list retrieved and rank using learned model
+        - Display ranked items to user
+
+- Retrieving more items => slower but better performance
+    - Carry out some offline experiments to see if retrieving additional items results in more relevant recommendations.
+
+- Goal of the recommender system:
+    - Movies most likely to be rated 5* by user
+    - Products most likely to be purchased
+    - Ads most likely to be clicked on
+    - Products generating the largest profit
+    - Video leading to maximum watch time
+
+- Ethical considerations with recommender systems
+    - Watch time
+    - problematic contents
+    - Transparency issues
+
+## TensorFlow implementation of content-based filtering
+
+```py
+# create the user input and point to the base network
+input_user = tf.keras.layers.Input(shape=(num_user_features))
+vu = user_NN(input_user)
+vu = tf.linalg.12_normalize(vu, axis=1)
+
+# create the item input and point to the base network
+input_item = tf.keras.layers.Input(shape=(num_user_features))
+vm = user_NN(input_item)
+vm = tf.linalg.12_normalize(vm, axis=1)
+
+# measure the similarity of the two vector outputs
+output = tf.keras.layers.Dot(axes=1)([vu, vm])
+
+# specify the inputs and output of the model
+model = Model([input_user, input_item], output)
+
+# specify the cost funciton
+cost = tf.keras.losses.MeanSquaredError()
+
+user_NN = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(256, activation='relu'),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(32)
+])
+
+item_NN = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(256, activation='relu'),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(32)
+])
+```
+
+## Principal component analysis
+
+> Unsupervised learning algorithm
+
+- Used for visualizing data with large no of features by reducing the number of features.
+
+- PCA with more or less automatically choose some features(choose just one axis) but not just that.
+- If you can't just ignore some features:
+    - Combining features (creating new axis that corresponds to points of two features) to get new feature
+        - Eg. combining height and length to get new variable size
